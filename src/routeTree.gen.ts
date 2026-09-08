@@ -10,14 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ReportRouteImport } from './routes/report'
 import { Route as RiskMapRouteImport } from './routes/risk-map'
+import { Route as SafetyGuidelinesRouteImport } from './routes/safety-guidelines'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AlertsRoute = AlertsRouteImport.update({
@@ -25,9 +34,19 @@ const AlertsRoute = AlertsRouteImport.update({
   path: '/alerts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReportRoute = ReportRouteImport.update({
@@ -40,43 +59,92 @@ const RiskMapRoute = RiskMapRouteImport.update({
   path: '/risk-map',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SafetyGuidelinesRoute = SafetyGuidelinesRouteImport.update({
+  id: '/safety-guidelines',
+  path: '/safety-guidelines',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/alerts': typeof AlertsRoute
+  '/assistant': typeof AssistantRoute
   '/dashboard': typeof DashboardRoute
+  '/insights': typeof InsightsRoute
   '/report': typeof ReportRoute
   '/risk-map': typeof RiskMapRoute
+  '/safety-guidelines': typeof SafetyGuidelinesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/alerts': typeof AlertsRoute
+  '/assistant': typeof AssistantRoute
   '/dashboard': typeof DashboardRoute
+  '/insights': typeof InsightsRoute
   '/report': typeof ReportRoute
   '/risk-map': typeof RiskMapRoute
+  '/safety-guidelines': typeof SafetyGuidelinesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/alerts': typeof AlertsRoute
+  '/assistant': typeof AssistantRoute
   '/dashboard': typeof DashboardRoute
+  '/insights': typeof InsightsRoute
   '/report': typeof ReportRoute
   '/risk-map': typeof RiskMapRoute
+  '/safety-guidelines': typeof SafetyGuidelinesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/alerts' | '/dashboard' | '/report' | '/risk-map'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/alerts'
+    | '/assistant'
+    | '/dashboard'
+    | '/insights'
+    | '/report'
+    | '/risk-map'
+    | '/safety-guidelines'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/alerts' | '/dashboard' | '/report' | '/risk-map'
-  id: '__root__' | '/' | '/alerts' | '/dashboard' | '/report' | '/risk-map'
+  to:
+    | '/'
+    | '/about'
+    | '/alerts'
+    | '/assistant'
+    | '/dashboard'
+    | '/insights'
+    | '/report'
+    | '/risk-map'
+    | '/safety-guidelines'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/alerts'
+    | '/assistant'
+    | '/dashboard'
+    | '/insights'
+    | '/report'
+    | '/risk-map'
+    | '/safety-guidelines'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AlertsRoute: typeof AlertsRoute
+  AssistantRoute: typeof AssistantRoute
   DashboardRoute: typeof DashboardRoute
+  InsightsRoute: typeof InsightsRoute
   ReportRoute: typeof ReportRoute
   RiskMapRoute: typeof RiskMapRoute
+  SafetyGuidelinesRoute: typeof SafetyGuidelinesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -88,6 +156,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/alerts': {
       id: '/alerts'
       path: '/alerts'
@@ -95,11 +170,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlertsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/report': {
@@ -116,15 +205,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RiskMapRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/safety-guidelines': {
+      id: '/safety-guidelines'
+      path: '/safety-guidelines'
+      fullPath: '/safety-guidelines'
+      preLoaderRoute: typeof SafetyGuidelinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AlertsRoute: AlertsRoute,
+  AssistantRoute: AssistantRoute,
   DashboardRoute: DashboardRoute,
+  InsightsRoute: InsightsRoute,
   ReportRoute: ReportRoute,
   RiskMapRoute: RiskMapRoute,
+  SafetyGuidelinesRoute: SafetyGuidelinesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
