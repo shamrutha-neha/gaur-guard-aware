@@ -26,7 +26,7 @@ export const Route = createFileRoute("/alerts")({
       },
     ],
   }),
-  component: Alerts;
+  component: Alerts,
 });
 
 const secondary = [
