@@ -94,7 +94,7 @@ const riskDot: Record<Risk, string> = {
 
 function RiskMap() {
   const [selectedId, setSelectedId] = useState("forest-edge");
-  const selected = zones.find((z) => z.id === selectedId) ?? zones[0];
+  const selected: Zone = zones.find((z) => z.id === selectedId) ?? zones[0]!;
 
   return (
     <Page>
